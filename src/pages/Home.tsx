@@ -25,76 +25,78 @@ const Home = () => {
 
   const experiences = [
     {
-      title: 'Software Intern',
-      company: 'Oracle Technologies at Vibhathi Labs',
-      period: 'July 2024 - October 2024',
-      description: 'During my internship at Oracle Technologies through Vibhathi Labs, I gained comprehensive experience in database technologies including SQL, PostgreSQL, and NoSQL databases. I developed a social media analytics project that demonstrated my ability to work with large datasets and implement efficient data processing solutions.',
+      title: 'Oracle Technologies Internship',
+      company: 'Vibhathi Labs',
+      period: '20 July 2024 - 09 October 2024',
+      description: 'Completed a 2-month intensive study of Oracle technologies, including SQL, PostgreSQL, and NoSQL databases, followed by a 1-month project. Gained hands-on experience in database design, optimization, and advanced querying. Developed a social media analytics project to demonstrate practical skills.',
       achievements: [
-        'Developed expertise in SQL, PostgreSQL, and NoSQL databases',
-        'Created a social media analytics project for data insights',
-        'Worked with large-scale datasets and implemented efficient data processing solutions',
-        'Collaborated with team members on database optimization projects'
+        'Mastered SQL, PostgreSQL, and NoSQL database concepts',
+        'Completed a 2-month Oracle technologies curriculum',
+        'Developed a social media analytics project as a capstone',
+        'Worked with large-scale datasets and implemented efficient data processing',
+        'Collaborated with team members on database optimization and best practices'
       ]
     },
     {
-      title: 'Software Intern',
+      title: 'Software Internship',
       company: 'Hostwire System',
-      period: 'December 2024 - February 2025',
-      description: 'At Hostwire System, I worked on an innovative machine learning project using Streamlit to analyze real-time Swiggy dataset. The project focused on developing a recommendation system for restaurants based on user preferences and historical data.',
+      period: '8 December 2024 - 8 February 2025',
+      description: 'Worked on a real-world project using a live Swiggy dataset to build a restaurant recommendation system. Utilized machine learning and data analysis to provide personalized recommendations and insights. Developed an interactive Streamlit dashboard for visualization and user interaction.',
       achievements: [
-        'Developed a machine learning model for restaurant recommendations',
-        'Created an interactive Streamlit dashboard for data visualization',
-        'Implemented real-time data processing and analysis',
-        'Built a user-friendly recommendation system for Swiggy users'
+        'Built a machine learning-based restaurant recommendation system',
+        'Processed and analyzed live Swiggy datasets for real-time insights',
+        'Developed an interactive Streamlit dashboard for recommendations',
+        'Implemented user-friendly features and data visualizations',
+        'Enhanced system performance and accuracy through iterative improvements'
       ]
     }
   ]
 
   const certificates = [
     {
-      title: 'Foundations of Prompt Engineering',
-      issuer: 'AWS',
+      title: 'Geospatial Data Analysis',
+      issuer: 'DataCamp',
       date: '2024',
-      credentialId: 'AWS-PE-2024',
-      description: 'Comprehensive course on prompt engineering fundamentals and best practices',
-      image: '/src/Image/foundation.png',
-      url: 'https://aws.amazon.com/certification/verify'
-    },
-    {
-      title: 'ChatGPT for Everyone',
-      issuer: 'Learn Prompting',
-      date: '2024',
-      credentialId: 'LP-CE-2024',
-      description: 'Advanced course on leveraging ChatGPT for various applications',
-      image: '/src/Image/chatgpt.png',
-      url: 'https://www.learnprompting.org/certificates'
-    },
-    {
-      title: 'Python 101 for Data Science',
-      issuer: 'IBM',
-      date: '2024',
-      credentialId: 'IBM-P101-2024',
-      description: 'Fundamental Python programming for data science applications',
-      image: '/src/Image/ibm.png',
-      url: 'https://www.ibm.com/training/badge-verify'
+      credentialId: 'DC-GEO-2024',
+      description: 'Advanced techniques for geospatial data analysis and processing.',
+      image: '/src/Image/geo.png',
+      url: 'https://www.datacamp.com/verify'
     },
     {
       title: 'Responsive Web Design',
       issuer: 'freeCodeCamp',
       date: '2024',
       credentialId: 'FCC-RWD-2024',
-      description: 'Complete course on creating responsive web applications',
+      description: 'Complete course on creating responsive web applications.',
       image: '/src/Image/freecode.png',
       url: 'https://www.freecodecamp.org/certification/verify'
     },
     {
-      title: 'GeoData Preprocessing Using Python',
-      issuer: 'DataCamp',
+      title: 'IBM Data Science',
+      issuer: 'IBM',
       date: '2024',
-      credentialId: 'DC-GDP-2024',
-      description: 'Advanced techniques for geospatial data processing',
-      image: '/src/Image/geo.png',
-      url: 'https://www.datacamp.com/verify'
+      credentialId: 'IBM-DS-2024',
+      description: 'Fundamental Python programming for data science applications.',
+      image: '/src/Image/ibm.png',
+      url: 'https://www.ibm.com/training/badge-verify'
+    },
+    {
+      title: 'ChatGPT Prompt Engineering',
+      issuer: 'OpenAI',
+      date: '2024',
+      credentialId: 'OPENAI-PE-2024',
+      description: 'Advanced course on leveraging ChatGPT for various applications.',
+      image: '/src/Image/chatgpt.png',
+      url: 'https://www.learnprompting.org/certificates'
+    },
+    {
+      title: 'Foundation Course',
+      issuer: 'Tech Academy',
+      date: '2024',
+      credentialId: 'FOUND-2024',
+      description: 'Foundational certification covering core programming concepts and practices.',
+      image: '/src/Image/fountation.png',
+      url: '#'
     }
   ]
 
@@ -106,8 +108,8 @@ const Home = () => {
       link: 'https://github.com/shanker-18/chatbot'
     },
     {
-      title: 'Travel Website',
-      description: 'Created a modern, responsive travel website (manian.ccbp.tech) showcasing various destinations with an intuitive user interface. The website features smooth animations and a clean design.',
+      title: 'Food Website',
+      description: 'Created a modern, responsive food website (manian.ccbp.tech) showcasing various cuisines and restaurants with an intuitive user interface. The website features smooth animations and a clean design.',
       technologies: ['HTML', 'CSS', 'JavaScript', 'React'],
       link: 'https://manian.ccbp.tech'
     },
@@ -127,7 +129,7 @@ const Home = () => {
       title: 'Restaurant Recommendation System',
       description: 'Created a machine learning-based recommendation system using real-time Swiggy dataset. The system analyzes user preferences and historical data to suggest the best restaurants.',
       technologies: ['Python', 'Streamlit', 'Machine Learning', 'Data Analysis'],
-      link: 'https://github.com/shanker-18/restaurant-recommender'
+      link: 'https://restaurant-comparison-manian.streamlit.app'
     }
   ]
 
@@ -205,7 +207,7 @@ const Home = () => {
           >
             <h2 className="text-3xl font-bold mb-4">About Me</h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              I am a passionate Full Stack Developer with expertise in AI/ML and web development. Currently pursuing B.Tech in Artificial Intelligence and Data Science at Sri Sairam Engineering College, I combine academic knowledge with practical experience to create innovative solutions.
+              I am a passionate Full Stack Developer with expertise in AI/ML and web development. Currently pursuing B.Tech in Artificial Intelligence and Data Science at National Engineering College, I combine academic knowledge with practical experience to create innovative solutions.
             </p>
           </motion.div>
 

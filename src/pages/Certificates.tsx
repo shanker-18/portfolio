@@ -1,54 +1,46 @@
+import React from 'react'
 import { motion } from 'framer-motion'
-
-const Certificates = () => {
+const Certificates: React.FC = () => {
   const certificates = [
     {
-      title: "Advanced Web Development",
-      issuer: "Udacity",
+      title: "IBM Certification",
+      issuer: "IBM",
       date: "2024",
-      credential: "UDACITY-123456",
-      description: "Comprehensive course covering modern web development practices, React, and advanced JavaScript concepts.",
-      image: "/certificates/udacity.png"
+      credential: "IBM-CERT",
+      description: "Professional certification from IBM covering essential skills and technologies.",
+      image: "/src/Image/ibm.png"
     },
     {
-      title: "AWS Solutions Architect",
-      issuer: "Amazon Web Services",
+      title: "ChatGPT Prompt Engineering",
+      issuer: "OpenAI",
       date: "2024",
-      credential: "AWS-789012",
-      description: "Professional certification in cloud architecture and AWS services implementation.",
-      image: "/certificates/aws.png"
+      credential: "OPENAI-CERT",
+      description: "Specialized certification in ChatGPT prompt engineering and AI interaction.",
+      image: "/src/Image/chatgpt.png"
     },
     {
-      title: "Data Science Fundamentals",
-      issuer: "Coursera",
-      date: "2023",
-      credential: "COURSERA-345678",
-      description: "Foundational course in data science, statistics, and machine learning basics.",
-      image: "/certificates/coursera.png"
+      title: "FreeCodeCamp Certification",
+      issuer: "FreeCodeCamp",
+      date: "2024",
+      credential: "FCC-CERT",
+      description: "Comprehensive web development certification covering modern technologies and best practices.",
+      image: "/src/Image/freecode.png"
     },
     {
-      title: "Flutter Development",
-      issuer: "Google",
-      date: "2023",
-      credential: "GOOGLE-901234",
-      description: "Complete guide to building cross-platform mobile applications using Flutter.",
-      image: "/certificates/google.png"
+      title: "Geospatial Analysis",
+      issuer: "Geo Institute",
+      date: "2024",
+      credential: "GEO-CERT",
+      description: "Advanced certification in geospatial analysis and mapping technologies.",
+      image: "/src/Image/geo.png"
     },
     {
-      title: "Python for Data Analysis",
-      issuer: "DataCamp",
-      date: "2023",
-      credential: "DATACAMP-567890",
-      description: "Practical course on data analysis using Python, pandas, and data visualization.",
-      image: "/certificates/datacamp.png"
-    },
-    {
-      title: "Machine Learning Specialization",
-      issuer: "Stanford Online",
-      date: "2023",
-      credential: "STANFORD-234567",
-      description: "Advanced specialization in machine learning algorithms and applications.",
-      image: "/certificates/stanford.png"
+      title: "Foundation Course",
+      issuer: "Tech Academy",
+      date: "2024",
+      credential: "FOUND-CERT",
+      description: "Foundational certification covering core programming concepts and practices.",
+      image: "/src/Image/fountation.png"
     }
   ]
 
@@ -98,5 +90,4 @@ const Certificates = () => {
     </div>
   )
 }
-
 export default Certificates 
