@@ -7,12 +7,13 @@ import { dirname, resolve } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-// Export Vite config
+// ✅ Final Vite Config for Deploy (Render/Netlify/etc.)
 export default defineConfig({
+  base: './', // 🔥 This ensures relative paths for images, JS, CSS after deployment
   plugins: [react()],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'), // Cleaned './src' → 'src'
+      '@': resolve(__dirname, 'src'),
     },
   },
   assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg'],
