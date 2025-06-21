@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -28,35 +27,4 @@ export default {
     },
   },
   plugins: [],
-=======
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        primary: '#EC4899', // pink-500
-      },
-      animation: {
-        'gradient': 'gradient 8s linear infinite',
-      },
-      keyframes: {
-        gradient: {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          },
-        },
-      },
-    },
-  },
-  plugins: [],
->>>>>>> 5ce3cbf8c2f08b45c25b48b676b435d7b1c02ead
 } 
