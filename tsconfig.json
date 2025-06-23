@@ -16,10 +16,19 @@
 
     "resolveJsonModule": true,  // Optional, if you plan to use JSON imports
 
-    "strict": true              // Optional, to enforce stricter TypeScript rules
+    "strict": true ,
+
+    "jsx": "react-jsx"
+
+
+
+
+
+
+           // Optional, to enforce stricter TypeScript rules
 
   },
 
-  "include": ["vite.config.ts", "src/**/*"]  // Include all .ts files in src as well
+  "include": ["vite.config.ts", "src/**/*", ]  // Include all .ts files in src as well
 
 }
