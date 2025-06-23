@@ -1,10 +1,25 @@
 {
+
   "compilerOptions": {
+
     "composite": true,
+
     "skipLibCheck": true,
+
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+
+    "moduleResolution": "node",  // Change 'bundler' to 'node'
+
+    "allowSyntheticDefaultImports": true,
+
+    "esModuleInterop": true,    // Add this for better module compatibility
+
+    "resolveJsonModule": true,  // Optional, if you plan to use JSON imports
+
+    "strict": true              // Optional, to enforce stricter TypeScript rules
+
   },
-  "include": ["vite.config.ts"]
+
+  "include": ["vite.config.ts", "src/**/*"]  // Include all .ts files in src as well
+
 }
