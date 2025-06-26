@@ -129,7 +129,7 @@ const Home = () => {
       title: 'Restaurant Recommendation System',
       description: 'Created a machine learning-based recommendation system using real-time Swiggy dataset. The system analyzes user preferences and historical data to suggest the best restaurants.',
       technologies: ['Python', 'Streamlit', 'Machine Learning', 'Data Analysis'],
-      link: 'https://restaurant-comparison-manian.streamlit.app'
+      link: 'https://manianvjs.streamlit.app/'
     }
   ]
 
