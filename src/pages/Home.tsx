@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-scroll'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import emailjs from 'emailjs-com'
 
 interface Certificate {
   title: string
@@ -15,6 +16,10 @@ interface Certificate {
 
 const Home = () => {
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null)
+  const formRef = useRef<HTMLFormElement | null>(null)
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [sending, setSending] = useState(false)
+  const [feedback, setFeedback] = useState<string | null>(null)
 
   const skills = [
     { category: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'] },
@@ -141,6 +146,34 @@ const Home = () => {
     setSelectedCertificate(null)
   }
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.id]: e.target.value })
+  }
+
+  const handleSendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setSending(true)
+    setFeedback(null)
+    emailjs.send(
+      'service_4e94foe',
+      'template_xywmkbk',
+      {
+        from_name: form.name,
+        from_email: form.email,
+        message: form.message,
+      },
+      '4VnIRDFvkTttdIHdT'
+    )
+      .then(() => {
+        setFeedback('Message sent successfully!')
+        setForm({ name: '', email: '', message: '' })
+      })
+      .catch(() => {
+        setFeedback('Failed to send message. Please try again later.')
+      })
+      .finally(() => setSending(false))
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Hero Section */}
@@ -196,7 +229,7 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4">
+      <section id="about" className="py-20 px-4 transition-all duration-300 hover:shadow-pink-500/20 hover:shadow-2xl hover:border-pink-500 hover:border rounded-2xl">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -234,7 +267,7 @@ const Home = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 bg-gray-800">
+      <section id="experience" className="py-24 px-4 bg-[#18181b] transition-all duration-300 hover:shadow-pink-500/20 hover:shadow-2xl hover:border-pink-500 hover:border rounded-2xl">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -243,34 +276,37 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold mb-4">Experience</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-pink-500">Internships & Experience</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               My professional journey includes internships at leading companies where I've developed expertise in software development and AI/ML.
             </p>
           </motion.div>
-
-          <div className="space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative pl-8 border-l-2 border-pink-500"
+                className="bg-[#23272f] rounded-2xl shadow-lg border border-gray-800 p-8 flex flex-col hover:scale-105 hover:shadow-pink-500/30 transition-all duration-300"
               >
-                <div className="absolute left-[-9px] top-0 w-4 h-4 bg-pink-500 rounded-full"></div>
-                <div className="bg-gray-900 p-6 rounded-xl">
-                  <h3 className="text-xl font-semibold mb-2">{exp.title}</h3>
-                  <p className="text-pink-500 mb-2">{exp.company}</p>
-                  <p className="text-gray-400 mb-4">{exp.period}</p>
-                  <p className="text-gray-300 mb-4">{exp.description}</p>
-                  <ul className="list-disc list-inside space-y-2 text-gray-300">
-                    {exp.achievements.map((achievement, i) => (
-                      <li key={i}>{achievement}</li>
-                    ))}
-                  </ul>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-pink-500/10">
+                    <svg className="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 01-8 0M12 14v7m-4 0h8" /></svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-1">{exp.title}</h3>
+                    <span className="text-pink-400 font-medium">{exp.company}</span>
+                  </div>
                 </div>
+                <p className="text-gray-400 mb-2 text-sm">{exp.period}</p>
+                <p className="text-gray-300 mb-4">{exp.description}</p>
+                <ul className="list-disc list-inside space-y-2 text-gray-300 pl-2">
+                  {exp.achievements.map((achievement, i) => (
+                    <li key={i}>{achievement}</li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -278,7 +314,7 @@ const Home = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4">
+      <section id="projects" className="py-20 px-4 transition-all duration-300 hover:shadow-pink-500/20 hover:shadow-2xl hover:border-pink-500 hover:border rounded-2xl">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -301,7 +337,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+                className="bg-gray-800 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-pink-500/40 hover:shadow-2xl hover:border-pink-500 hover:border-2 hover:scale-105"
               >
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
@@ -332,7 +368,7 @@ const Home = () => {
       </section>
 
       {/* Certificates Section */}
-      <section id="certificates" className="py-20 px-4 bg-gray-800">
+      <section id="certificates" className="py-24 px-4 bg-[#18181b] transition-all duration-300 hover:shadow-pink-500/20 hover:shadow-2xl hover:border-pink-500 hover:border rounded-2xl">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -341,13 +377,12 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold mb-4">Certificates</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-pink-500">Certificates</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Professional certifications and courses I've completed to enhance my skills.
             </p>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {certificates.map((cert, index) => (
               <motion.div
                 key={index}
@@ -355,34 +390,22 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group bg-gray-900 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+                className="group bg-[#23272f] rounded-2xl shadow-lg border border-gray-800 overflow-hidden hover:scale-105 hover:shadow-pink-500/30 transition-all duration-300 cursor-pointer"
+                onClick={() => handleCertificateClick(cert)}
               >
-                <div 
-                  className="relative h-48 cursor-pointer" 
-                  onClick={() => handleCertificateClick(cert)}
-                >
+                <div className="relative h-48 w-full flex items-center justify-center bg-gray-900">
                   <img
                     src={cert.image}
                     alt={cert.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="max-h-40 object-contain mx-auto transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent group-hover:from-pink-900/90 transition-colors duration-300">
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <span className="inline-flex items-center px-4 py-2 bg-pink-500 text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        View Full Certificate
-                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8v.01M8 8v.01M12 8v.01M16 8v.01M4 12v.01M8 12v.01M12 12v.01M16 12v.01M4 16v.01M8 16v.01M12 16v.01M16 16v.01" />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
+                  <span className="absolute top-4 right-4 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">{cert.issuer}</span>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{cert.title}</h3>
-                  <p className="text-pink-500 mb-2">{cert.issuer}</p>
-                  <p className="text-gray-400 mb-2">{cert.date}</p>
-                  <p className="text-gray-300">{cert.description}</p>
-                  <p className="text-gray-400 mt-2 text-sm">ID: {cert.credentialId}</p>
+                  <h3 className="text-lg font-semibold mb-1 text-white">{cert.title}</h3>
+                  <p className="text-gray-400 mb-2 text-sm">{cert.date}</p>
+                  <p className="text-gray-300 mb-2 text-sm">{cert.description}</p>
+                  <span className="inline-block mt-2 text-xs text-gray-500">ID: {cert.credentialId}</span>
                 </div>
               </motion.div>
             ))}
@@ -458,7 +481,7 @@ const Home = () => {
       </AnimatePresence>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4">
+      <section id="contact" className="py-20 px-4 transition-all duration-300 hover:shadow-pink-500/20 hover:shadow-2xl hover:border-pink-500 hover:border rounded-2xl">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -536,7 +559,7 @@ const Home = () => {
               viewport={{ once: true }}
               className="bg-gray-800 p-8 rounded-xl"
             >
-              <form className="space-y-6">
+              <form ref={formRef} className="space-y-6" onSubmit={handleSendEmail}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                     Name
@@ -544,7 +567,10 @@ const Home = () => {
                   <input
                     type="text"
                     id="name"
+                    value={form.name}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 text-white"
+                    required
                   />
                 </div>
                 <div>
@@ -554,7 +580,10 @@ const Home = () => {
                   <input
                     type="email"
                     id="email"
+                    value={form.email}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 text-white"
+                    required
                   />
                 </div>
                 <div>
@@ -564,15 +593,22 @@ const Home = () => {
                   <textarea
                     id="message"
                     rows={4}
+                    value={form.message}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 text-white"
+                    required
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-pink-500 text-white px-6 py-3 rounded-lg hover:bg-pink-600 transition-colors"
+                  className="w-full bg-pink-500 text-white px-6 py-3 rounded-lg hover:bg-pink-600 transition-colors disabled:opacity-60"
+                  disabled={sending}
                 >
-                  Send Message
+                  {sending ? 'Sending...' : 'Send Message'}
                 </button>
+                {feedback && (
+                  <div className={`text-center mt-4 ${feedback.includes('success') ? 'text-green-400' : 'text-red-400'}`}>{feedback}</div>
+                )}
               </form>
             </motion.div>
           </div>
