@@ -158,9 +158,10 @@ const Home = () => {
       'service_4e94foe',
       'template_xywmkbk',
       {
-        from_name: form.name,
-        from_email: form.email,
+        name: form.name,
+        email: form.email,
         message: form.message,
+        reply_to: form.email,
       },
       '4VnIRDFvkTttdIHdT'
     )
