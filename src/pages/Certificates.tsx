@@ -8,7 +8,7 @@ const Certificates: React.FC = () => {
       date: "2024",
       credential: "IBM-CERT",
       description: "Professional certification from IBM covering essential skills and technologies.",
-      image: "/src/Image/ibm.png"
+      image: '/ibm.png'
     },
     {
       title: "ChatGPT Prompt Engineering",
@@ -16,7 +16,7 @@ const Certificates: React.FC = () => {
       date: "2024",
       credential: "OPENAI-CERT",
       description: "Specialized certification in ChatGPT prompt engineering and AI interaction.",
-      image: "/src/Image/chatgpt.png"
+      image: '/chatgpt.png'
     },
     {
       title: "FreeCodeCamp Certification",
@@ -24,7 +24,7 @@ const Certificates: React.FC = () => {
       date: "2024",
       credential: "FCC-CERT",
       description: "Comprehensive web development certification covering modern technologies and best practices.",
-      image: "/src/Image/freecode.png"
+      image: '/freecode.png'
     },
     {
       title: "Geospatial Analysis",
@@ -32,7 +32,7 @@ const Certificates: React.FC = () => {
       date: "2024",
       credential: "GEO-CERT",
       description: "Advanced certification in geospatial analysis and mapping technologies.",
-      image: "/src/Image/geo.png"
+      image: '/geo.png'
     },
     {
       title: "Foundation Course",
@@ -40,7 +40,7 @@ const Certificates: React.FC = () => {
       date: "2024",
       credential: "FOUND-CERT",
       description: "Foundational certification covering core programming concepts and practices.",
-      image: "/src/Image/fountation.png"
+      image: '/fountation.png'
     }
   ]
 

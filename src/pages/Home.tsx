@@ -59,7 +59,7 @@ const Home = () => {
       date: '2024',
       credentialId: 'DC-GEO-2024',
       description: 'Advanced techniques for geospatial data analysis and processing.',
-      image: '/src/Image/geo.png',
+      image: '/geo.png',
       url: 'https://www.datacamp.com/verify'
     },
     {
@@ -68,7 +68,7 @@ const Home = () => {
       date: '2024',
       credentialId: 'FCC-RWD-2024',
       description: 'Complete course on creating responsive web applications.',
-      image: '/src/Image/freecode.png',
+      image: '/freecode.png',
       url: 'https://www.freecodecamp.org/certification/verify'
     },
     {
@@ -77,7 +77,7 @@ const Home = () => {
       date: '2024',
       credentialId: 'IBM-DS-2024',
       description: 'Fundamental Python programming for data science applications.',
-      image: '/src/Image/ibm.png',
+      image: '/ibm.png',
       url: 'https://www.ibm.com/training/badge-verify'
     },
     {
@@ -86,7 +86,7 @@ const Home = () => {
       date: '2024',
       credentialId: 'OPENAI-PE-2024',
       description: 'Advanced course on leveraging ChatGPT for various applications.',
-      image: '/src/Image/chatgpt.png',
+      image: '/chatgpt.png',
       url: 'https://www.learnprompting.org/certificates'
     },
     {
@@ -95,7 +95,7 @@ const Home = () => {
       date: '2024',
       credentialId: 'FOUND-2024',
       description: 'Foundational certification covering core programming concepts and practices.',
-      image: '/src/Image/fountation.png',
+      image: '/fountation.png',
       url: '#'
     }
   ]
@@ -185,7 +185,7 @@ const Home = () => {
           >
             <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="/src/Image/profile.png"
+                src="/profile.png"
                 alt="Manian VJS"
                 className="w-full h-full object-cover"
               />
