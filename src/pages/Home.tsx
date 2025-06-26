@@ -398,48 +398,58 @@ const Home = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeModal}
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 cursor-pointer"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 cursor-pointer bg-black/60 backdrop-blur-[6px]"
           >
             <motion.div
-              initial={{ scale: 0.5 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.5 }}
+              initial={{ scale: 0.8, y: 40 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.8, y: 40 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               onClick={e => e.stopPropagation()}
-              className="relative max-w-7xl w-full bg-gray-900 rounded-xl overflow-hidden cursor-default"
+              className="relative w-full max-w-3xl bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 overflow-hidden cursor-default"
             >
-              <div className="relative">
-                <img
-                  src={selectedCertificate.image}
-                  alt={selectedCertificate.title}
-                  className="w-full h-auto max-h-[80vh] object-contain"
-                />
-                <button
-                  onClick={closeModal}
-                  className="absolute top-4 right-4 bg-pink-500 text-white p-2 rounded-full hover:bg-pink-600 transition-colors"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold mb-2">{selectedCertificate.title}</h3>
-                <p className="text-pink-500 mb-2">{selectedCertificate.issuer}</p>
-                <p className="text-gray-400 mb-2">{selectedCertificate.date}</p>
-                <p className="text-gray-300 mb-4">{selectedCertificate.description}</p>
-                <div className="flex justify-between items-center">
-                  <p className="text-gray-400">ID: {selectedCertificate.credentialId}</p>
-                  <a
-                    href={selectedCertificate.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
-                  >
-                    Verify Certificate
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
+              <button
+                onClick={closeModal}
+                className="absolute top-4 right-4 z-10 bg-pink-500 text-white p-2 rounded-full shadow-lg hover:bg-pink-600 transition-colors focus:outline-none focus:ring-2 focus:ring-pink-400"
+                aria-label="Close"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className="flex flex-col md:flex-row gap-0 md:gap-8 items-center p-6 md:p-10">
+                <div className="flex-1 flex justify-center items-center">
+                  <img
+                    src={selectedCertificate.image}
+                    alt={selectedCertificate.title}
+                    className="w-full max-w-md max-h-[60vh] rounded-xl border-4 border-white/30 shadow-xl object-contain bg-white/10"
+                  />
+                </div>
+                <div className="flex-1 mt-8 md:mt-0">
+                  <div className="bg-gray-900/80 rounded-xl p-6 shadow-lg border border-white/10">
+                    <h3 className="text-3xl font-bold mb-2 text-white flex items-center gap-2">
+                      {selectedCertificate.title}
+                    </h3>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="inline-block w-3 h-3 rounded-full bg-pink-500"></span>
+                      <span className="text-pink-400 font-semibold text-lg">{selectedCertificate.issuer}</span>
+                    </div>
+                    <p className="text-gray-400 mb-1 text-base">{selectedCertificate.date}</p>
+                    <p className="text-gray-200 mb-4 text-lg">{selectedCertificate.description}</p>
+                    <div className="flex flex-wrap items-center justify-between gap-2 mt-4">
+                      <span className="text-gray-400 text-sm">ID: <span className="font-mono text-white">{selectedCertificate.credentialId}</span></span>
+                      <a
+                        href={selectedCertificate.image}
+                        download
+                        className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-pink-500 to-pink-400 text-white font-semibold rounded-lg shadow-md hover:from-pink-600 hover:to-pink-500 transition-all focus:outline-none focus:ring-2 focus:ring-pink-400"
+                      >
+                        Download Certificate
+                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v16h16V4H4zm4 8h8m-4-4v8" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
