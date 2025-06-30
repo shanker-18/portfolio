@@ -243,7 +243,7 @@ const Home = () => {
             <p className="text-gray-300 max-w-2xl mx-auto">
               I am a passionate Full Stack Developer with expertise in AI/ML and web development. Currently pursuing B.Tech in Artificial Intelligence and Data Science at National Engineering College, I combine academic knowledge with practical experience to create innovative solutions.
             </p>
-          </motion.div>
+          </motion.div>rlpp
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skills.map((skill, index) => (
