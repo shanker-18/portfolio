@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-scroll'
 import { useState, useRef } from 'react'
 import emailjs from 'emailjs-com'
+import intern1 from '../Image/intern1.png'
+import intern2 from '../Image/Intern2.png'
 
 interface Certificate {
   title: string
@@ -20,11 +22,12 @@ const Home = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sending, setSending] = useState(false)
   const [feedback, setFeedback] = useState<string | null>(null)
+  const [selectedInternImage, setSelectedInternImage] = useState<string | null>(null)
 
   const skills = [
     { category: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'] },
-    { category: 'Backend', items: ['Python', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL'] },
-    { category: 'AI/ML', items: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'NLP', 'Computer Vision'] },
+    { category: 'Backend', items: ['Python', 'Node.js', 'SQL', 'MongoDB', 'PostgreSQL','Java'] },
+    { category: 'AI/ML', items: ['TensorFlow', 'Scikit-learn', 'NLP', 'Computer Vision'] },
     { category: 'Tools', items: ['Git', 'Docker', 'AWS', 'Linux', 'VS Code'] },
   ]
 
@@ -175,6 +178,15 @@ const Home = () => {
       .finally(() => setSending(false))
   }
 
+  const handleCertificateDownload = (image: string, title: string) => {
+    const link = document.createElement('a');
+    link.href = image;
+    link.download = `${title.replace(/\s+/g, '_')}_certificate.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Hero Section */}
@@ -243,7 +255,7 @@ const Home = () => {
             <p className="text-gray-300 max-w-2xl mx-auto">
               I am a passionate Full Stack Developer with expertise in AI/ML and web development. Currently pursuing B.Tech in Artificial Intelligence and Data Science at National Engineering College, I combine academic knowledge with practical experience to create innovative solutions.
             </p>
-          </motion.div>rlpp
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skills.map((skill, index) => (
@@ -308,6 +320,12 @@ const Home = () => {
                     <li key={i}>{achievement}</li>
                   ))}
                 </ul>
+                <button
+                  className="mt-4 px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors w-max"
+                  onClick={() => setSelectedInternImage(index === 0 ? intern1 : intern2)}
+                >
+                  View Details
+                </button>
               </motion.div>
             ))}
           </div>
@@ -430,11 +448,26 @@ const Home = () => {
               exit={{ scale: 0.8, y: 40 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               onClick={e => e.stopPropagation()}
-              className="relative w-full max-w-3xl bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 overflow-hidden cursor-default"
+              className="relative w-full max-w-6xl bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 overflow-hidden cursor-default"
             >
+              {/* Download Button - floating at top right */}
+              <button
+                onClick={e => {
+                  e.preventDefault();
+                  handleCertificateDownload(selectedCertificate.image, selectedCertificate.title);
+                }}
+                className="absolute top-4 right-16 z-20 bg-green-500 text-white p-2 rounded-full shadow-lg hover:bg-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-400"
+                title="Download Certificate"
+                aria-label="Download Certificate"
+              >
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v16h16V4H4zm4 8h8m-4-4v8" />
+                </svg>
+              </button>
+              {/* Close Button */}
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-10 bg-pink-500 text-white p-2 rounded-full shadow-lg hover:bg-pink-600 transition-colors focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="absolute top-4 right-4 z-20 bg-pink-500 text-white p-2 rounded-full shadow-lg hover:bg-pink-600 transition-colors focus:outline-none focus:ring-2 focus:ring-pink-400"
                 aria-label="Close"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -446,7 +479,7 @@ const Home = () => {
                   <img
                     src={selectedCertificate.image}
                     alt={selectedCertificate.title}
-                    className="w-full max-w-md max-h-[60vh] rounded-xl border-4 border-white/30 shadow-xl object-contain bg-white/10"
+                    className="w-full max-w-5xl max-h-[90vh] rounded-xl border-4 border-white/30 shadow-xl object-contain bg-white/10"
                   />
                 </div>
                 <div className="flex-1 mt-8 md:mt-0">
@@ -462,19 +495,48 @@ const Home = () => {
                     <p className="text-gray-200 mb-4 text-lg">{selectedCertificate.description}</p>
                     <div className="flex flex-wrap items-center justify-between gap-2 mt-4">
                       <span className="text-gray-400 text-sm">ID: <span className="font-mono text-white">{selectedCertificate.credentialId}</span></span>
-                      <a
-                        href={selectedCertificate.image}
-                        download
-                        className="inline-flex items-center px-5 py-2 bg-gradient-to-r from-pink-500 to-pink-400 text-white font-semibold rounded-lg shadow-md hover:from-pink-600 hover:to-pink-500 transition-all focus:outline-none focus:ring-2 focus:ring-pink-400"
-                      >
-                        Download Certificate
-                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v16h16V4H4zm4 8h8m-4-4v8" />
-                        </svg>
-                      </a>
                     </div>
                   </div>
                 </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Internship Details Modal */}
+      <AnimatePresence>
+        {selectedInternImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedInternImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 cursor-pointer bg-black/60 backdrop-blur-[6px]"
+          >
+            <motion.div
+              initial={{ scale: 0.8, y: 40 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.8, y: 40 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              onClick={e => e.stopPropagation()}
+              className="relative w-full max-w-md bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 overflow-hidden cursor-default"
+            >
+              <button
+                onClick={() => setSelectedInternImage(null)}
+                className="absolute top-4 right-4 z-10 bg-pink-500 text-white p-2 rounded-full shadow-lg hover:bg-pink-600 transition-colors focus:outline-none focus:ring-2 focus:ring-pink-400"
+                aria-label="Close"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className="flex flex-col items-center p-6">
+                <img
+                  src={selectedInternImage}
+                  alt="Internship Details"
+                  className="w-full max-w-xs max-h-[60vh] rounded-xl border-4 border-white/30 shadow-xl object-contain bg-white/10"
+                />
               </div>
             </motion.div>
           </motion.div>
