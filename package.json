@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "foodiehub",
-=======
-  "name": "manian-portfolio",
->>>>>>> 429974fac0693d579c69cef4b0bce0835a70e8ca
   "private": true,
   "version": "0.0.0",
   "type": "module",
