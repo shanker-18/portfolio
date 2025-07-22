@@ -116,17 +116,10 @@ const Home = () => {
       link: 'https://github.com/shanker-18/chatbot'
     },
     {
-<<<<<<< HEAD
       title: 'Foodiehub',
       description: 'Created a modern, responsive food ordering website (Foodiehub) showcasing various cuisines and restaurants with an intuitive user interface. The website features smooth animations and a clean design.',
       technologies: ['HTML', 'CSS', 'JavaScript', 'React'],
       link: 'https://food-order-zdtq.onrender.com/menu'
-=======
-      title: 'Food Website',
-      description: 'Created a modern, responsive food website (manian.ccbp.tech) showcasing various cuisines and restaurants with an intuitive user interface. The website features smooth animations and a clean design.',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'React'],
-      link: 'https://manian.ccbp.tech'
->>>>>>> 429974fac0693d579c69cef4b0bce0835a70e8ca
     },
     {
       title: 'FreelanceHub Platform',
@@ -220,7 +213,6 @@ const Home = () => {
               >
                 Contact Me
               </Link>
-<<<<<<< HEAD
               <a
                 href="https://drive.google.com/file/d/1EE_TeZlguIuA4gLXPTcN0_P6FZThZaUr/view?usp=drive_link"
                 className="bg-gray-800 border border-pink-500 text-pink-500 px-6 py-3 rounded-lg hover:bg-pink-500/10 transition-colors cursor-pointer"
@@ -229,16 +221,6 @@ const Home = () => {
               >
                 Download Resume
               </a>
-=======
-              <Link
-                to="about"
-                smooth={true}
-                duration={500}
-                className="border border-pink-500 text-pink-500 px-6 py-3 rounded-lg hover:bg-pink-500/10 transition-colors cursor-pointer"
-              >
-                Learn More
-              </Link>
->>>>>>> 429974fac0693d579c69cef4b0bce0835a70e8ca
             </div>
           </motion.div>
           <motion.div
