@@ -38,7 +38,7 @@ const Experience = () => {
   ]
 
   return (
-    <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8">
+    <div id="experience" className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
