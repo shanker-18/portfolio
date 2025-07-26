@@ -12,7 +12,7 @@ interface Certificate {
   credentialId: string
   description: string
   image: string
-  url: string
+  url?: string
 }
 
 interface Project {
