@@ -168,7 +168,7 @@ const Home = () => {
         'Features': ['User Experience Optimization', 'Interactive Components']
       },
       githubLink: 'https://github.com/shanker-18/foodiehub',
-      liveDemo: 'https://food-order-zdtq.onrender.com/menu'
+      liveDemo: 'https://food-order-zdtq.onrender.com'
     },
     {
       title: 'FreelanceHub Platform',
