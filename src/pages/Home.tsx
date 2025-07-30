@@ -327,7 +327,7 @@ const Home = () => {
                 Contact Me
               </Link>
               <a
-                href="https://drive.google.com/file/d/1EE_TeZlguIuA4gLXPTcN0_P6FZThZaUr/view?usp=drive_link"
+                href="https://drive.google.com/file/d/13OeUZaBxflHuR4TUi6zLoswShj581Tgd/view?usp=sharing"
                 className="bg-gray-800 border border-pink-500 text-pink-500 px-6 py-3 rounded-lg hover:bg-pink-500/10 transition-colors cursor-pointer"
                 target="_blank"
                 rel="noopener noreferrer"
