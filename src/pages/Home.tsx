@@ -189,7 +189,8 @@ const Home = () => {
         'Features': ['Real-time Features', 'User Management', 'Project Management'],
         'Authentication': ['Firebase Admin SDK']
       },
-      githubLink: 'https://github.com/shanker-18/freelancehub'
+      githubLink: 'https://github.com/shanker-18/freelancehub',
+      liveDemo: 'https://freelancehub-frontend-xisr.onrender.com/'
     },
     {
       title: 'Dr.Crop - Plant Disease Detection',
@@ -327,7 +328,7 @@ const Home = () => {
                 Contact Me
               </Link>
               <a
-                href="https://drive.google.com/file/d/13OeUZaBxflHuR4TUi6zLoswShj581Tgd/view?usp=sharing"
+                href="https://drive.google.com/file/d/1i2uukpAt4tg6M-Soz7_DL69vZOBmnZ6Z/view?usp=sharing"
                 className="bg-gray-800 border border-pink-500 text-pink-500 px-6 py-3 rounded-lg hover:bg-pink-500/10 transition-colors cursor-pointer"
                 target="_blank"
                 rel="noopener noreferrer"
